@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery | Bell Driver Education Inc.</title>
+  <meta name="description" content="See photos of Bell Driver Education's classrooms, students, and driving instruction in Toronto.">
+  <link rel="icon" type="image/png" href="images/bell-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="images/bell-logo.png" alt="Bell Driver logo"><div class="nav-brand-text"><span class="nav-brand-name">Bell Driver Education</span><span class="nav-brand-sub">Inc. — Since 1954</span></div></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About Us</a><a href="facts.html">Facts</a><a href="pricing.html">Pricing</a><a href="gallery.html" class="active">Gallery</a><a href="#" class="coming-soon">Online Course ✦</a><a href="register.html" class="nav-cta">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>›</span><span aria-current="page">Gallery</span></nav>
+      <h1>Photo Gallery</h1>
+      <p>A glimpse into our classrooms and in-car instruction</p>
+    </div>
+  </header>
+
+  <main class="section bg-gray-50">
+    <div class="container">
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Rendered by gallery.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&larr;</button>
+    <img src="" alt="Gallery Image" class="lightbox-img" id="lightbox-img">
+    <button class="lightbox-next" id="lightbox-next" aria-label="Next image">&rarr;</button>
+    <div class="lightbox-counter" id="lightbox-counter">1 / 10</div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/bell-logo.png" alt="Bell Driver Education logo"><p class="footer-brand-name">Bell Driver Education Inc.</p><p>Shaping confident, responsible drivers since 1954.</p></div><div><h4>Quick Links</h4><nav class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="facts.html">Facts & Tips</a><a href="pricing.html">Pricing</a><a href="register.html">Register</a><a href="gallery.html">Gallery</a></nav></div><div><h4>Contact Us</h4><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><a href="tel:4165511818" style="color:rgba(255,255,255,0.7);">416-551-1818</a></span></div><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:info@belldriver.ca" style="color:rgba(255,255,255,0.7);">info@belldriver.ca</a></span></div></div></div></div><div class="footer-bottom"><div class="container"><p>&copy; 2026 Bell Driver Education Inc. All rights reserved.</p></div></div></footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

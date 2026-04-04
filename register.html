@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register | Bell Driver Education Inc.</title>
+  <meta name="description" content="Register for Bell Driver Education's ministry-approved driving course. Simple 4-step registration process online.">
+  <meta name="keywords" content="driving school registration, driver education enrollment, Bell Driver toronto">
+  <link rel="icon" type="image/png" href="images/bell-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand"><img src="images/bell-logo.png" alt="Bell Driver logo"><div class="nav-brand-text"><span class="nav-brand-name">Bell Driver Education</span><span class="nav-brand-sub">Inc. — Since 1954</span></div></a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a><a href="about.html">About Us</a><a href="facts.html">Facts</a><a href="pricing.html">Pricing</a><a href="gallery.html">Gallery</a><a href="#" class="coming-soon">Online Course ✦</a><a href="register.html" class="nav-cta active">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>›</span><span aria-current="page">Register</span></nav>
+      <h1>Register</h1>
+      <p>Start your journey to becoming a confident driver</p>
+    </div>
+  </header>
+
+  <main class="register-main bg-gray-50">
+    <div class="container">
+
+      <!-- PHONE BANNER -->
+      <div class="register-phone-banner animate-on-scroll">
+        <div>
+          <h3 style="margin-bottom:var(--space-xs); font-size:var(--font-size-lg);">Prefer to register by phone?</h3>
+          <p>Speak with Angie D'Antonio (Manager) or Joe Manno (Instructor)</p>
+        </div>
+        <div>
+          <a href="tel:4165511818">416-551-1818</a>
+        </div>
+      </div>
+
+      <div class="text-center" style="margin-bottom:var(--space-3xl);">
+        <h2 class="section-title animate-on-scroll" id="register-heading">Register to our ministry approved course</h2>
+        <p class="section-subtitle animate-on-scroll delay-1" style="margin:0 auto;">Registration Made Easy in Four Simple Steps</p>
+      </div>
+
+      <div class="register-card animate-on-scroll delay-2">
+        
+        <!-- STEP INDICATOR -->
+        <div class="step-indicator">
+          <div class="step-item active" id="indicator-1">
+            <div class="step-number">1</div><div class="step-label">Details</div>
+          </div>
+          <div class="step-item" id="indicator-2">
+            <div class="step-number">2</div><div class="step-label">Licence</div>
+          </div>
+          <div class="step-item" id="indicator-3">
+            <div class="step-number">3</div><div class="step-label">Dates</div>
+          </div>
+          <div class="step-item" id="indicator-4">
+            <div class="step-number">4</div><div class="step-label">Payment</div>
+          </div>
+        </div>
+
+        <form id="registration-form" novalidate>
+          
+          <!-- STEP 1: Details -->
+          <div class="step-content active" id="step-1">
+            <h3 style="margin-bottom:var(--space-xl);">Step 1 — Fill the Registration Form</h3>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="student_name" class="form-label">Student Name<span class="required">*</span></label>
+                <input type="text" id="student_name" name="student_name" class="form-control" required>
+                <div class="form-error">Please enter student name.</div>
+              </div>
+              <div class="form-group">
+                <label for="high_school" class="form-label">High School Attending</label>
+                <input type="text" id="high_school" name="high_school" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email" class="form-label">Email<span class="required">*</span></label>
+                <input type="email" id="email" name="email" class="form-control" required>
+                <div class="form-error">Please enter a valid email.</div>
+              </div>
+              <div class="form-group">
+                <label for="license_number" class="form-label">Licence #<span class="required">*</span></label>
+                <input type="text" id="license_number" name="license_number" class="form-control" placeholder="15 characters" required>
+                <div class="form-error">Please enter your 15-character driver's licence number.</div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone" class="form-label">Main Phone #<span class="required">*</span></label>
+                <input type="tel" id="phone" name="phone" class="form-control" required>
+                <div class="form-error">Please enter a valid phone number.</div>
+              </div>
+              <div class="form-group">
+                <label for="cell" class="form-label">Student's Cell #</label>
+                <input type="tel" id="cell" name="cell" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="address" class="form-label">Address<span class="required">*</span></label>
+              <input type="text" id="address" name="address" class="form-control" required>
+              <div class="form-error">Please enter your street address.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="apt" class="form-label">Apt #</label>
+                <input type="text" id="apt" name="apt" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="city" class="form-label">City<span class="required">*</span></label>
+                <input type="text" id="city" name="city" class="form-control" required>
+                <div class="form-error">Please enter your city.</div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="postal_code" class="form-label">Postal Code<span class="required">*</span></label>
+                <input type="text" id="postal_code" name="postal_code" class="form-control" required>
+                <div class="form-error">Please enter postal code.</div>
+              </div>
+              <div class="form-group">
+                <label for="intersection" class="form-label">Main Intersection</label>
+                <input type="text" id="intersection" name="intersection" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="how_heard" class="form-label">How Did You Hear About Us?</label>
+              <select id="how_heard" name="how_heard" class="form-control">
+                <option value="">Select an option...</option>
+                <option value="Friend/Family">Friend or Family</option>
+                <option value="Search Engine">Search Engine (Google)</option>
+                <option value="Social Media">Social Media</option>
+                <option value="Advertisement">Advertisement</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="terms-box">
+              20 HOURS IN-CLASS AND 10 HOURS IN-VEHICLE INSTRUCTIONS MUST BE COMPLETED WITHIN ONE YEAR OF COURSE START DATE, WITH A PASSING MARK OF 70%. IN-CLASS INSTRUCTIONS MUST COMMENCE BEFORE IN-VEHICLE INSTRUCTIONS. DATES AND TIMES OF IN-VEHICLE INSTRUCTIONS ARE TO BE ARRANGED WITH THE ASSIGNED INSTRUCTOR. IN-VEHICLE INSTRUCTIONS MUST BEGIN AND END AT HOME, LESSONS STARTING AND ENDING AWAY FROM HOME MUST BE AUTHORIZED. I CERTIFY THAT THE STATEMENTS IN THIS DOCUMENT ARE ACCURATE AND GIVE CONSENT TO BELL DRIVER EDUCATION INC TO A PHOTO COPY OF THE ONTARIO DRIVERS LICENCE AND THE RELEASE OF ANY INFORMATION CONTAINED HEREIN TO THE MINISTRY OF TRANSPORTATION OF ONTARIO, THE INSURANCE BUREAU OF CANADA AND THE MTO COURSE INSPECTOR.
+            </div>
+            
+            <div class="form-check">
+              <input type="checkbox" id="consent" name="consent" required>
+              <label for="consent">I accept the terms and conditions outlined above.<span class="required">*</span></label>
+            </div>
+            <div class="form-error" id="consent-error" style="margin-left: 28px; margin-top: -10px; margin-bottom: 20px;">You must accept the terms to proceed.</div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-primary" id="btn-next-1">Next Step &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Licence -->
+          <div class="step-content" id="step-2">
+            <h3 style="margin-bottom:var(--space-md);">Step 2 — Scan of G1 Licence</h3>
+            <p style="color:var(--color-gray-600); margin-bottom:var(--space-xl);">Once you've completed the registration form, the next step is to provide a clear, high-resolution scan of your G1 licence. This document is crucial for verifying your eligibility for our courses.</p>
+            
+            <div class="form-group">
+              <input type="file" id="g1_scan" name="g1_scan" accept=".jpg,.jpeg,.png,.pdf" style="display:none;">
+              <label for="g1_scan" class="file-upload-area" id="drop-zone">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21.2 15c.7-1.2 1-2.5.7-3.9-.6-2-2.4-3.5-4.4-3.5h-1.2c-.7-3-3.2-5.2-6.2-5.6-3-.3-5.9 1.3-7.3 4-1.2 2.5-1 6.5.5 8.8m8.7-1.6V21M12 21l-3-3m3 3l3-3"/></svg>
+                <p><strong>Click to browse</strong> or drag and drop your file here</p>
+                <p style="font-size:var(--font-size-xs); margin-top:var(--space-sm);">Accepted formats: JPG, PNG, PDF (Max 5MB)<span class="required">*</span></p>
+              </label>
+              <div class="form-error" id="file-error">Please upload a scan of your G1 licence to proceed.</div>
+              
+              <div class="file-preview" id="file-preview">
+                <img id="preview-img" src="" alt="File preview">
+                <div style="text-align:center; margin-top:var(--space-sm);">
+                  <strong id="preview-name">filename.jpg</strong> <br>
+                  <button type="button" id="btn-remove-file" style="color:var(--color-red); font-size:var(--font-size-xs); background:none; border:none; text-decoration:underline; font-weight:600; cursor:pointer; margin-top:5px;">Remove File</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-secondary" id="btn-prev-2">&larr; Back</button>
+              <button type="button" class="btn btn-primary" id="btn-next-2">Next Step &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Dates -->
+          <div class="step-content" id="step-3">
+            <h3 style="margin-bottom:var(--space-md);">Step 3 — Course Selection Date</h3>
+            <p style="color:var(--color-gray-600); margin-bottom:var(--space-xl);">With your registration form and G1 licence scan ready, it's time to choose the date for your course. Our scheduling options are designed to offer flexibility to suit your calendar.</p>
+            
+            <div style="text-align:center; margin-bottom:var(--space-xl);">
+              <button type="button" class="btn btn-primary btn-lg" id="btn-select-date" style="padding:1rem 3rem;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="margin-right:8px;vertical-align:-3px;"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Select Date
+              </button>
+              <p id="selected-course-display" style="margin-top:var(--space-md); font-weight:600; color:var(--color-navy); display:none;"></p>
+            </div>
+
+            <div style="background:var(--color-gray-50); border-radius:var(--radius-md); padding:var(--space-lg); text-align:center;">
+              <h4 style="color:var(--color-gold); margin-bottom:var(--space-sm); font-size:var(--font-size-base);">NEED MORE INFO ON PROGRAMS?</h4>
+              <p style="font-size:var(--font-size-sm); color:var(--color-gray-600); margin-bottom:var(--space-sm);">
+                <strong>ANGIE OR JOE:</strong> <a href="tel:4166301814" style="color:var(--color-navy);">416-630-1814</a> &nbsp;|&nbsp;
+                <strong>Office:</strong> <a href="tel:4165511818" style="color:var(--color-navy);">416-551-1818</a>
+              </p>
+              <p style="font-size:var(--font-size-sm); color:var(--color-gray-600); margin:0;">
+                <a href="mailto:info@belldriver.ca" style="color:var(--color-navy);">info@belldriver.ca</a> &nbsp;|&nbsp;
+                <a href="mailto:bell.driver@hotmail.com" style="color:var(--color-navy);">bell.driver@hotmail.com</a>
+              </p>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-secondary" id="btn-prev-3">&larr; Back</button>
+              <button type="button" class="btn btn-primary" id="btn-next-3">Next Step &rarr;</button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Payment -->
+          <div class="step-content" id="step-4">
+            <h3 style="margin-bottom:var(--space-md);">Step 4 — Payment Options</h3>
+            <p style="color:var(--color-gray-600); margin-bottom:var(--space-xl);">Review your payment options below. <strong>A $250.00 deposit is due upon registration.</strong> You'll be able to complete payment after submitting this form.</p>
+            
+            <div class="payment-option">
+              <h4>Option 1: E-Transfer</h4>
+              <p>Send e-transfer deposit to <strong>bell.driver@hotmail.com</strong>. Please use the student's full name in the message box.</p>
+            </div>
+            
+            <div class="payment-option">
+              <h4>Option 2: In Person Payment</h4>
+              <p>Cash, check, or other methods accepted by appointment at our office: 686 Wilson Ave, Toronto.</p>
+            </div>
+            
+            <div style="background:rgba(212, 168, 67, 0.1); border-left:4px solid var(--color-gold); padding:var(--space-md); margin:var(--space-xl) 0;">
+              <p style="margin:0; font-weight:500; font-size:var(--font-size-sm); color:var(--color-navy);">Note: Submitting this application will reserve your spot. We will contact you to confirm receipt and finalize scheduling. Forms are processed sequentially.</p>
+            </div>
+
+            <div class="step-actions">
+              <button type="button" class="btn btn-secondary" id="btn-prev-4">&larr; Back</button>
+              <button type="button" class="btn btn-primary" id="btn-submit" style="background:#27ae60; border-color:#27ae60; box-shadow:0 4px 15px rgba(39, 174, 96, 0.35);">
+                <span id="submit-text">Submit Application</span>
+                <span id="submit-spinner" style="display:none; margin-left:8px;">
+                  <svg class="spinner" width="20" height="20" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="100 30" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 25 25;360 25 25"/></circle></svg>
+                </span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- COURSE DATE MODAL -->
+  <div class="modal-overlay" id="date-modal-overlay" aria-hidden="true">
+    <div class="date-modal" role="dialog" aria-labelledby="modal-title">
+      <div class="date-modal-header">
+        <h2 id="modal-title">Course Selection Date</h2>
+        <button type="button" class="lightbox-close" id="date-modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="date-modal-body">
+
+        <!-- MARCH -->
+        <div class="course-month">
+          <div class="course-month-label">MARCH BREAK</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-03C">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 03C</div>
+              <div class="course-type">4 Day Consecutive</div>
+              <div class="course-dates">
+                <span>Mon, Mar 16 · 10am–4pm</span>
+                <span>Tue, Mar 17 · 10am–4pm</span>
+                <span>Wed, Mar 18 · 10am–4pm</span>
+                <span>Thu, Mar 19 · 10am–4pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- APRIL -->
+        <div class="course-month">
+          <div class="course-month-label">APRIL</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-04S">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 04S</div>
+              <div class="course-type">4 Day Saturdays</div>
+              <div class="course-dates">
+                <span>Sat, Apr 4 · 9am–3pm</span>
+                <span>Sat, Apr 11 · 9am–3pm</span>
+                <span>Sat, Apr 18 · 9am–3pm</span>
+                <span>Sat, Apr 25 · 9am–3pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- MAY -->
+        <div class="course-month">
+          <div class="course-month-label">MAY</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-05S">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 05S</div>
+              <div class="course-type">4 Day Saturdays</div>
+              <div class="course-dates">
+                <span>Sat, May 9 · 9am–3pm</span>
+                <span class="course-note">Victoria Day Weekend — NO CLASS May 16</span>
+                <span>Sat, May 23 · 9am–3pm</span>
+                <span>Sat, May 30 · 9am–3pm</span>
+                <span>Sat, Jun 6 · 9am–3pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- JUNE -->
+        <div class="course-month">
+          <div class="course-month-label">JUNE</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-06C">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 06C</div>
+              <div class="course-type">4 Day Consecutive</div>
+              <div class="course-dates">
+                <span>Mon, Jun 22 · 10am–4pm</span>
+                <span>Tue, Jun 23 · 10am–4pm</span>
+                <span>Wed, Jun 24 · 10am–4pm</span>
+                <span>Thu, Jun 25 · 10am–4pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- JULY -->
+        <div class="course-month">
+          <div class="course-month-label">JULY</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-07S">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 07S</div>
+              <div class="course-type">4 Day Saturdays</div>
+              <div class="course-dates">
+                <span>Sat, Jul 18 · 9am–3pm</span>
+                <span>Sat, Jul 25 · 9am–3pm</span>
+                <span class="course-note">Civic Holiday — NO CLASS Sat Aug 1</span>
+                <span>Sat, Aug 8 · 9am–3pm</span>
+                <span>Sat, Aug 15 · 9am–3pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <!-- AUGUST -->
+        <div class="course-month">
+          <div class="course-month-label">AUGUST</div>
+          <label class="course-option">
+            <input type="radio" name="selected_course" value="W26-08C">
+            <div class="course-option-content">
+              <div class="course-code">COURSE # W26 - 08C</div>
+              <div class="course-type">4 Day Consecutive</div>
+              <div class="course-dates">
+                <span>Mon, Aug 31 · 10am–4pm</span>
+                <span>Tue, Sep 1 · 10am–4pm</span>
+                <span>Wed, Sep 2 · 10am–4pm</span>
+                <span>Thu, Sep 3 · 10am–4pm</span>
+              </div>
+            </div>
+          </label>
+        </div>
+
+      </div>
+      <div class="date-modal-footer">
+        <button type="button" class="btn btn-secondary" id="date-modal-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary" id="date-modal-confirm" disabled>Confirm Selection</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Application submitted successfully!</div>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo"><div class="container"><div class="footer-grid"><div class="footer-brand"><img src="images/bell-logo.png" alt="Bell Driver Education logo"><p class="footer-brand-name">Bell Driver Education Inc.</p><p>Shaping confident, responsible drivers since 1954.</p></div><div><h4>Quick Links</h4><nav class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="facts.html">Facts & Tips</a><a href="pricing.html">Pricing</a><a href="register.html">Register</a><a href="gallery.html">Gallery</a></nav></div><div><h4>Contact Us</h4><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><a href="tel:4165511818" style="color:rgba(255,255,255,0.7);">416-551-1818</a></span></div><div class="footer-contact-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span><a href="mailto:info@belldriver.ca" style="color:rgba(255,255,255,0.7);">info@belldriver.ca</a></span></div></div></div></div><div class="footer-bottom"><div class="container"><p>&copy; 2026 Bell Driver Education Inc. All rights reserved.</p></div></div></footer>
+
+  <script src="js/main.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-storage-compat.js"></script>
+  
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <script src="js/form.js"></script>
+</body>
+</html>
