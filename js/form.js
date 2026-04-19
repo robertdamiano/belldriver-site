@@ -3,8 +3,12 @@
 // ============================================================
 
 // TODO: Replace with actual keys before deployment
-// EmailJS Initialization
-// emailjs.init("YOUR_PUBLIC_KEY");
+// EmailJS Initialization — emailjs.init("YOUR_PUBLIC_KEY");
+// Form submissions route to:
+//   In-Class -> info@belldriver.ca
+//   Online   -> joe.belldriveredu@gmail.com
+// The recipient_email field in formData is set automatically based on program_type.
+// Use {{recipient_email}} as the "To" address in your EmailJS template.
 
 // Firebase Initialization
 const firebaseConfig = {
@@ -41,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Step 1 Validation
   const validateStep1 = () => {
     let isValid = true;
-    const requiredInputIds = ['student_name', 'email', 'license_number', 'phone', 'address', 'city', 'postal_code'];
+    const requiredInputIds = ['program_type', 'student_name', 'email', 'license_number', 'phone', 'address', 'city', 'postal_code'];
     
     // Check texts
     requiredInputIds.forEach(id => {
@@ -228,7 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('btn-submit').addEventListener('click', async () => {
     // Collect data
+    const programType = document.getElementById('program_type').value;
     const formData = {
+      program_type: programType,
       student_name: document.getElementById('student_name').value,
       high_school: document.getElementById('high_school').value,
       email: document.getElementById('email').value,
@@ -241,7 +247,8 @@ document.addEventListener('DOMContentLoaded', () => {
       postal_code: document.getElementById('postal_code').value,
       intersection: document.getElementById('intersection').value,
       how_heard: document.getElementById('how_heard').value,
-      selected_course: selectedCourse
+      selected_course: selectedCourse,
+      recipient_email: programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
     };
 
     submitBtn.disabled = true;

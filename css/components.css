@@ -111,7 +111,7 @@
 }
 
 .nav-brand-name {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   font-weight: 700;
   color: var(--color-white);
   line-height: 1.1;
@@ -424,6 +424,7 @@
 .pricing-card.featured {
   border-color: var(--color-gold);
   box-shadow: 0 8px 40px rgba(212, 168, 67, 0.2);
+  padding-top: calc(var(--space-2xl) + 2rem);
 }
 
 .pricing-card.featured:hover {
@@ -432,16 +433,18 @@
 
 .pricing-badge {
   position: absolute;
-  top: 1.25rem;
-  right: -2.5rem;
+  top: 0;
+  left: 0;
+  right: 0;
   background: var(--color-gold);
   color: var(--color-navy);
   font-size: var(--font-size-xs);
   font-weight: 700;
-  padding: 0.35rem 3rem;
-  transform: rotate(30deg);
+  padding: 0.5rem 1rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  text-align: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .pricing-title {
