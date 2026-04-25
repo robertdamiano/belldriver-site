@@ -874,13 +874,15 @@
   font-weight: 500;
   color: var(--color-white);
   box-shadow: var(--shadow-xl);
-  transform: translateY(120%);
-  transition: transform var(--transition-base);
+  transform: translateY(200%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform var(--transition-base), opacity var(--transition-base);
   z-index: 9999;
   max-width: 360px;
 }
 
-.toast.show { transform: translateY(0); }
+.toast.show { transform: translateY(0); opacity: 1; pointer-events: auto; }
 .toast.success { background: #27ae60; }
 .toast.error { background: var(--color-red); }
 

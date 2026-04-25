@@ -2,24 +2,19 @@
 // FORM MULTI-STEP, VALIDATION & SUBMISSION
 // ============================================================
 
-// TODO: Replace with actual keys before deployment
-// EmailJS Initialization — emailjs.init("YOUR_PUBLIC_KEY");
-// Form submissions route to:
-//   In-Class -> info@belldriver.ca
-//   Online   -> joe.belldriveredu@gmail.com
-// The recipient_email field in formData is set automatically based on program_type.
-// Use {{recipient_email}} as the "To" address in your EmailJS template.
+// EmailJS Initialization
+emailjs.init("o1AEf6i_hMpniz6pq");
 
 // Firebase Initialization
 const firebaseConfig = {
-  // apiKey: "YOUR_API_KEY",
-  // authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  // projectId: "YOUR_PROJECT_ID",
-  // storageBucket: "YOUR_PROJECT_ID.appspot.com",
-//   messagingSenderId: "SENDER_ID",
-//   appId: "APP_ID"
+  apiKey: "AIzaSyAOfuHOpaEsrraDkiHwZjiZVZoaGCX9SJU",
+  authDomain: "bell-driver-site.firebaseapp.com",
+  projectId: "bell-driver-site",
+  storageBucket: "bell-driver-site.firebasestorage.app",
+  messagingSenderId: "624522754795",
+  appId: "1:624522754795:web:98309aa866c5ed081d1cae"
 };
-// firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('registration-form')) return;
@@ -231,6 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   document.getElementById('btn-submit').addEventListener('click', async () => {
+    if (document.getElementById('website').value) return;
+
     // Collect data
     const programType = document.getElementById('program_type').value;
     const formData = {
@@ -248,7 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
       intersection: document.getElementById('intersection').value,
       how_heard: document.getElementById('how_heard').value,
       selected_course: selectedCourse,
-      recipient_email: programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
+      // TODO pre-launch: restore -> programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
+      recipient_email: 'robert.f.damiano@gmail.com'
     };
 
     submitBtn.disabled = true;
@@ -256,36 +254,29 @@ document.addEventListener('DOMContentLoaded', () => {
     submitSpinner.style.display = 'inline-block';
 
     try {
-        /* TODO Uncomment when Firebase/EmailJS configured 
-        
-        // 1. Upload to Firebase Storage
+        // 1. Upload G1 licence scan to Firebase Storage
         const storageRef = firebase.storage().ref();
         const timestamp = new Date().getTime();
         const fileName = `${timestamp}_${fileToUpload.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
         const licenseRef = storageRef.child(`g1-licenses/${fileName}`);
-        
+
         const snapshot = await licenseRef.put(fileToUpload);
         const downloadURL = await snapshot.ref.getDownloadURL();
-        
-        // Add URL to data
         formData.g1_license_url = downloadURL;
 
-        // 2. Send Email via EmailJS
-        // Replace SERVICE_ID and TEMPLATE_ID
-        await emailjs.send("SERVICE_ID_HERE", "TEMPLATE_ID_HERE", formData);
-        
-        */
-        
-        // Simulate network for local test
-        await new Promise(r => setTimeout(r, 2000));
-        
+        // 2. Send email via EmailJS
+        await emailjs.send("service_l50m3bm", "template_mdf9b3g", formData);
+
         showToast("Application submitted successfully! We will contact you shortly.");
-        
+
         // Reset
         form.reset();
         fileToUpload = null;
         filePreview.classList.remove('visible');
         dropZone.style.display = 'block';
+        selectedCourse = '';
+        courseDisplay.textContent = '';
+        courseDisplay.style.display = 'none';
         showStep(1);
 
     } catch (err) {
