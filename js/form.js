@@ -245,8 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
       intersection: document.getElementById('intersection').value,
       how_heard: document.getElementById('how_heard').value,
       selected_course: selectedCourse,
-      // TODO pre-launch: restore -> programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
-      recipient_email: 'robert.f.damiano@gmail.com'
+      recipient_email: programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
     };
 
     submitBtn.disabled = true;
