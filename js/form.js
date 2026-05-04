@@ -16,6 +16,13 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
+// York Region city → route to Joe Lorefice; all others → info@belldriver.ca
+const YORK_REGION_CITIES = new Set([
+  'vaughan', 'maple', 'woodbridge', 'richmond hill', 'aurora',
+  'east gwillimbury', 'georgina', 'newmarket', 'whitchurch-stouffville',
+  'stouffville', 'markham', 'king', 'king city', 'schomberg', 'nobleton'
+]);
+
 document.addEventListener('DOMContentLoaded', () => {
   if (!document.getElementById('registration-form')) return;
 
@@ -27,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const showStep = (step) => {
     document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
     document.querySelectorAll('.step-item').forEach(el => {
-      const stepNum = parseInt(el.id.split('-')[1]);
+      const stepNum = parseInt(el.dataset.step);
       el.classList.remove('active', 'completed');
       if (stepNum < step) el.classList.add('completed');
       if (stepNum === step) el.classList.add('active');
@@ -37,42 +44,48 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: document.querySelector('.register-card').offsetTop - 100, behavior: 'smooth' });
   };
 
+  // Step indicator click — allow jumping back to completed steps only
+  document.querySelectorAll('.step-item').forEach(el => {
+    const handler = () => {
+      const target = parseInt(el.dataset.step);
+      if (target < currentStep) showStep(target);
+    };
+    el.addEventListener('click', handler);
+    el.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') handler(); });
+  });
+
   // Step 1 Validation
   const validateStep1 = () => {
     let isValid = true;
-    const requiredInputIds = ['program_type', 'student_name', 'email', 'license_number', 'phone', 'address', 'city', 'postal_code'];
-    
-    // Check texts
+    const requiredInputIds = ['program_type', 'student_name', 'email', 'license_number', 'phone', 'cell', 'address', 'city', 'postal_code', 'intersection'];
+
     requiredInputIds.forEach(id => {
       const el = document.getElementById(id);
       const errorDiv = el.nextElementSibling;
       if (!el.value.trim()) {
         el.classList.add('error');
-        if(errorDiv && errorDiv.classList.contains('form-error')) errorDiv.classList.add('visible');
+        if (errorDiv && errorDiv.classList.contains('form-error')) errorDiv.classList.add('visible');
         isValid = false;
       } else {
         el.classList.remove('error');
-        if(errorDiv && errorDiv.classList.contains('form-error')) errorDiv.classList.remove('visible');
-        
-        // Basic email check
+        if (errorDiv && errorDiv.classList.contains('form-error')) errorDiv.classList.remove('visible');
+
         if (id === 'email' && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(el.value)) {
-            el.classList.add('error');
-            errorDiv.textContent = 'Please enter a valid email address.';
-            errorDiv.classList.add('visible');
-            isValid = false;
+          el.classList.add('error');
+          errorDiv.textContent = 'Please enter a valid email address.';
+          errorDiv.classList.add('visible');
+          isValid = false;
         }
       }
     });
 
-    // Check licence length roughly
     const lic = document.getElementById('license_number');
     if (lic.value.trim() && lic.value.trim().length < 5) {
-        lic.classList.add('error');
-        lic.nextElementSibling.classList.add('visible');
-        isValid = false;
+      lic.classList.add('error');
+      lic.nextElementSibling.classList.add('visible');
+      isValid = false;
     }
 
-    // Check consent
     const consent = document.getElementById('consent');
     if (!consent.checked) {
       document.getElementById('consent-error').classList.add('visible');
@@ -84,12 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return isValid;
   };
 
-  // Step 2 Validation (File)
+  // Step 2: G1 upload is optional — always allow proceeding
   const validateStep2 = () => {
-    if (!fileToUpload) {
-      document.getElementById('file-error').classList.add('visible');
-      return false;
-    }
     document.getElementById('file-error').classList.remove('visible');
     return true;
   };
@@ -107,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalOverlay = document.getElementById('date-modal-overlay');
   const modalConfirmBtn = document.getElementById('date-modal-confirm');
   const courseDisplay = document.getElementById('selected-course-display');
+  const courseText = document.getElementById('selected-course-text');
 
   const openModal = () => {
     modalOverlay.classList.add('open');
@@ -122,25 +132,29 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('date-modal-cancel').addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) closeModal(); });
 
-  // Enable confirm when a radio is selected
   document.querySelectorAll('input[name="selected_course"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      modalConfirmBtn.disabled = false;
-    });
+    radio.addEventListener('change', () => { modalConfirmBtn.disabled = false; });
   });
 
-  // Confirm selection
   modalConfirmBtn.addEventListener('click', () => {
     const checked = document.querySelector('input[name="selected_course"]:checked');
     if (!checked) return;
     selectedCourse = checked.value;
-    // Build display text from the option content
     const option = checked.closest('.course-option');
     const code = option.querySelector('.course-code').textContent;
     const type = option.querySelector('.course-type').textContent;
-    courseDisplay.textContent = `✓ Selected: ${code} — ${type}`;
+    courseText.textContent = `✓ Selected: ${code} — ${type}`;
     courseDisplay.style.display = 'block';
     closeModal();
+  });
+
+  // Deselect course
+  document.getElementById('btn-deselect-course').addEventListener('click', () => {
+    selectedCourse = '';
+    courseText.textContent = '';
+    courseDisplay.style.display = 'none';
+    document.querySelectorAll('input[name="selected_course"]').forEach(r => r.checked = false);
+    modalConfirmBtn.disabled = true;
   });
 
   // Remove visible error when typing
@@ -161,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filePreview = document.getElementById('file-preview');
   const previewImg = document.getElementById('preview-img');
   const previewName = document.getElementById('preview-name');
-  
+
   const handleFile = (file) => {
     const validTypes = ['image/jpeg', 'image/png', 'application/pdf'];
     const errorEl = document.getElementById('file-error');
@@ -171,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
       errorEl.classList.add('visible');
       return;
     }
-    if (file.size > 5 * 1024 * 1024) { // 5MB
+    if (file.size > 5 * 1024 * 1024) {
       errorEl.textContent = "File is too large. Maximum size is 5MB.";
       errorEl.classList.add('visible');
       return;
@@ -188,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.onload = (e) => { previewImg.src = e.target.result; previewImg.style.display = 'block'; };
       reader.readAsDataURL(file);
     } else {
-      previewImg.style.display = 'none'; // hide img for pdf
+      previewImg.style.display = 'none';
     }
   };
 
@@ -228,10 +242,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('btn-submit').addEventListener('click', async () => {
     if (document.getElementById('website').value) return;
 
-    // Collect data
-    const programType = document.getElementById('program_type').value;
+    const cityValue = document.getElementById('city').value.trim().toLowerCase();
+    const isYorkRegion = YORK_REGION_CITIES.has(cityValue);
+
     const formData = {
-      program_type: programType,
+      program_type: document.getElementById('program_type').value,
       student_name: document.getElementById('student_name').value,
       high_school: document.getElementById('high_school').value,
       email: document.getElementById('email').value,
@@ -245,46 +260,46 @@ document.addEventListener('DOMContentLoaded', () => {
       intersection: document.getElementById('intersection').value,
       how_heard: document.getElementById('how_heard').value,
       selected_course: selectedCourse,
-      recipient_email: programType === 'Online' ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
+      recipient_email: isYorkRegion ? 'joe.belldriveredu@gmail.com' : 'info@belldriver.ca'
     };
 
     submitBtn.disabled = true;
-    submitText.textContent = 'Uploading & Sending...';
+    submitText.textContent = 'Sending...';
     submitSpinner.style.display = 'inline-block';
 
     try {
-        // 1. Upload G1 licence scan to Firebase Storage
+      // Upload G1 scan only if one was provided
+      if (fileToUpload) {
         const storageRef = firebase.storage().ref();
         const timestamp = new Date().getTime();
         const fileName = `${timestamp}_${fileToUpload.name.replace(/[^a-zA-Z0-9.]/g, '_')}`;
         const licenseRef = storageRef.child(`g1-licenses/${fileName}`);
-
         const snapshot = await licenseRef.put(fileToUpload);
-        const downloadURL = await snapshot.ref.getDownloadURL();
-        formData.g1_license_url = downloadURL;
+        formData.g1_license_url = await snapshot.ref.getDownloadURL();
+      } else {
+        formData.g1_license_url = '';
+      }
 
-        // 2. Send email via EmailJS
-        await emailjs.send("service_l50m3bm", "template_mdf9b3g", formData);
+      await emailjs.send("service_l50m3bm", "template_mdf9b3g", formData);
 
-        showToast("Application submitted successfully! We will contact you shortly.");
+      showToast("Application submitted successfully! We will contact you shortly.");
 
-        // Reset
-        form.reset();
-        fileToUpload = null;
-        filePreview.classList.remove('visible');
-        dropZone.style.display = 'block';
-        selectedCourse = '';
-        courseDisplay.textContent = '';
-        courseDisplay.style.display = 'none';
-        showStep(1);
+      form.reset();
+      fileToUpload = null;
+      filePreview.classList.remove('visible');
+      dropZone.style.display = 'block';
+      selectedCourse = '';
+      courseText.textContent = '';
+      courseDisplay.style.display = 'none';
+      showStep(1);
 
     } catch (err) {
-        console.error("Submission error:", err);
-        showToast("An error occurred. Please try again or contact us by phone.", true);
+      console.error("Submission error:", err);
+      showToast("An error occurred. Please try again or contact us by phone.", true);
     } finally {
-        submitBtn.disabled = false;
-        submitText.textContent = 'Submit Application';
-        submitSpinner.style.display = 'none';
+      submitBtn.disabled = false;
+      submitText.textContent = 'Submit Application';
+      submitSpinner.style.display = 'none';
     }
   });
 

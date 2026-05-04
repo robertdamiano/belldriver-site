@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road Test Booking | Bell Driver Education Inc.</title>
+  <meta name="description" content="Request a road test package with Bell Driver Education. Our team will contact you to confirm your booking.">
+  <link rel="icon" type="image/png" href="images/bell-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="index.html" class="nav-brand" aria-label="Bell Driver Education home">
+        <img src="images/bell-logo.png" alt="Bell Driver logo">
+        <div class="nav-brand-text">
+          <span class="nav-brand-name">Bell Driver Education</span>
+          <span class="nav-brand-sub">Inc. — Since 1954</span>
+        </div>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" data-page="index.html">Home</a>
+        <a href="about.html" data-page="about.html">About Us</a>
+        <a href="facts.html" data-page="facts.html">Facts</a>
+        <a href="pricing.html" data-page="pricing.html">Pricing</a>
+        <a href="gallery.html" data-page="gallery.html">Gallery</a>
+        <a href="register.html" data-page="register.html" class="nav-cta">Register</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="pricing.html">Pricing</a>
+        <span aria-hidden="true">›</span>
+        <span aria-current="page">Road Test Booking</span>
+      </nav>
+      <h1>Road Test Booking</h1>
+      <p>Leave your details and we'll be in touch to confirm your booking</p>
+    </div>
+  </header>
+
+  <main class="register-main bg-gray-50">
+    <div class="container">
+
+      <div style="max-width:600px; margin:0 auto;">
+
+        <div class="register-phone-banner animate-on-scroll" style="margin-bottom:var(--space-3xl);">
+          <div>
+            <h3 style="margin-bottom:var(--space-xs); font-size:var(--font-size-lg);">Prefer to register by phone?</h3>
+            <p>Speak with our team to get started</p>
+          </div>
+          <div>
+            <a href="tel:4165511818">416-551-1818</a>
+          </div>
+        </div>
+
+        <div class="register-card animate-on-scroll">
+          <h2 style="margin-bottom:var(--space-sm);">Request a Road Test Package</h2>
+          <p style="color:var(--color-gray-600); margin-bottom:var(--space-2xl);">Fill in your details below. Our office will contact you to confirm your booking and answer any questions.</p>
+
+          <form id="road-test-form" novalidate>
+
+            <!-- Test type selection (auto-set from URL, also shown to user) -->
+            <div class="form-group" style="margin-bottom:var(--space-xl);">
+              <label class="form-label">Road Test Package<span class="required">*</span></label>
+              <div style="display:flex; gap:var(--space-md); flex-wrap:wrap;">
+                <label style="display:flex; align-items:center; gap:var(--space-sm); font-weight:500; cursor:pointer;">
+                  <input type="radio" name="test_type" id="type_g2" value="G2 Road Test" style="accent-color:var(--color-navy); width:18px; height:18px;">
+                  G2 Road Test
+                </label>
+                <label style="display:flex; align-items:center; gap:var(--space-sm); font-weight:500; cursor:pointer;">
+                  <input type="radio" name="test_type" id="type_g" value="G Highway Road Test" style="accent-color:var(--color-navy); width:18px; height:18px;">
+                  G Highway Road Test
+                </label>
+              </div>
+              <div class="form-error" id="type-error">Please select a road test package.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="rt_name" class="form-label">Full Name<span class="required">*</span></label>
+              <input type="text" id="rt_name" name="rt_name" class="form-control" required>
+              <div class="form-error">Please enter your full name.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="rt_phone" class="form-label">Phone Number<span class="required">*</span></label>
+              <input type="tel" id="rt_phone" name="rt_phone" class="form-control" required>
+              <div class="form-error">Please enter a phone number.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="rt_email" class="form-label">Email Address<span class="required">*</span></label>
+              <input type="email" id="rt_email" name="rt_email" class="form-control" required>
+              <div class="form-error">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="rt_course" class="form-label">Course Number (if available)</label>
+              <input type="text" id="rt_course" name="rt_course" class="form-control" placeholder="e.g. W26-05S">
+            </div>
+
+            <input type="text" name="website" id="rt_website" style="display:none;" tabindex="-1" autocomplete="off">
+
+            <div style="margin-top:var(--space-2xl);">
+              <button type="button" id="rt-submit-btn" class="btn btn-primary btn-lg" style="width:100%;">
+                <span id="rt-submit-text">Send Request</span>
+                <span id="rt-submit-spinner" style="display:none; margin-left:8px;">
+                  <svg class="spinner" width="20" height="20" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="100 30" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1s" values="0 25 25;360 25 25"/></circle></svg>
+                </span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- SUCCESS MODAL -->
+  <div id="rt-success-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:1000; display:flex; align-items:center; justify-content:center;" aria-hidden="true">
+    <div style="background:var(--color-white); border-radius:var(--radius-xl); padding:var(--space-3xl); max-width:440px; width:90%; text-align:center; box-shadow:var(--shadow-xl);">
+      <div style="width:64px; height:64px; background:rgba(39,174,96,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto var(--space-lg);">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#27ae60" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2 style="margin-bottom:var(--space-md);">Request Sent!</h2>
+      <p style="color:var(--color-gray-600); margin-bottom:var(--space-2xl);">Thank you — our office will contact you shortly to confirm your road test booking.</p>
+      <a href="pricing.html" class="btn btn-primary">Back to Pricing</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="images/bell-logo.png" alt="Bell Driver Education logo">
+          <p class="footer-brand-name">Bell Driver Education Inc.</p>
+          <p>Shaping confident, responsible drivers in the Greater Toronto and York Region since 1954. Ministry of Transportation approved.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="facts.html">Facts &amp; Tips</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="register.html">Register</a>
+            <a href="gallery.html">Photo Gallery</a>
+          </nav>
+        </div>
+        <div>
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>686 Wilson Ave. Toronto Ontario M3K 1E1</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.81-.81a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span><a href="tel:4165511818" style="color:rgba(255,255,255,0.7);">416-551-1818</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+            <span><a href="tel:6472065635" style="color:rgba(255,255,255,0.7);">647-206-5635</a> — Online Program Inquiries</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span><a href="mailto:info@belldriver.ca" style="color:rgba(255,255,255,0.7);">info@belldriver.ca</a></span>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <!-- TODO: Replace # with Bell Driver Instagram URL once provided by Joe Lorefice -->
+            <span><a href="#" target="_blank" rel="noopener noreferrer" style="color:rgba(255,255,255,0.7);">Instagram</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2026 Bell Driver Education Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <script>
+    emailjs.init("o1AEf6i_hMpniz6pq");
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Auto-select test type from URL param
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get('type');
+      if (type === 'g2') document.getElementById('type_g2').checked = true;
+      if (type === 'g') document.getElementById('type_g').checked = true;
+
+      const successOverlay = document.getElementById('rt-success-overlay');
+      successOverlay.style.display = 'none';
+
+      document.getElementById('rt-submit-btn').addEventListener('click', async () => {
+        if (document.getElementById('rt_website').value) return;
+
+        let isValid = true;
+
+        // Validate test type
+        const testTypeChecked = document.querySelector('input[name="test_type"]:checked');
+        const typeError = document.getElementById('type-error');
+        if (!testTypeChecked) {
+          typeError.classList.add('visible');
+          isValid = false;
+        } else {
+          typeError.classList.remove('visible');
+        }
+
+        // Validate required text fields
+        ['rt_name', 'rt_phone', 'rt_email'].forEach(id => {
+          const el = document.getElementById(id);
+          const err = el.nextElementSibling;
+          if (!el.value.trim()) {
+            el.classList.add('error');
+            if (err && err.classList.contains('form-error')) err.classList.add('visible');
+            isValid = false;
+          } else {
+            el.classList.remove('error');
+            if (err && err.classList.contains('form-error')) err.classList.remove('visible');
+          }
+        });
+
+        // Basic email format check
+        const emailEl = document.getElementById('rt_email');
+        if (emailEl.value.trim() && !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailEl.value)) {
+          emailEl.classList.add('error');
+          emailEl.nextElementSibling.classList.add('visible');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        const btn = document.getElementById('rt-submit-btn');
+        const btnText = document.getElementById('rt-submit-text');
+        const spinner = document.getElementById('rt-submit-spinner');
+        btn.disabled = true;
+        btnText.textContent = 'Sending...';
+        spinner.style.display = 'inline-block';
+
+        try {
+          await emailjs.send("service_l50m3bm", "template_mdf9b3g", {
+            program_type: testTypeChecked.value,
+            student_name: document.getElementById('rt_name').value,
+            phone: document.getElementById('rt_phone').value,
+            email: document.getElementById('rt_email').value,
+            selected_course: document.getElementById('rt_course').value || '(not provided)',
+            recipient_email: 'info@belldriver.ca',
+            high_school: '', license_number: '', cell: '', address: '',
+            apt: '', city: '', postal_code: '', intersection: '',
+            how_heard: '', g1_license_url: ''
+          });
+
+          document.getElementById('road-test-form').reset();
+          successOverlay.style.display = 'flex';
+          successOverlay.setAttribute('aria-hidden', 'false');
+        } catch (err) {
+          console.error('Road test submission error:', err);
+          alert('An error occurred. Please try again or call us at 416-551-1818.');
+        } finally {
+          btn.disabled = false;
+          btnText.textContent = 'Send Request';
+          spinner.style.display = 'none';
+        }
+      });
+
+      // Clear inline errors on input
+      document.querySelectorAll('#road-test-form .form-control').forEach(input => {
+        input.addEventListener('input', () => {
+          input.classList.remove('error');
+          const err = input.nextElementSibling;
+          if (err && err.classList.contains('form-error')) err.classList.remove('visible');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>

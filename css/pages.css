@@ -487,6 +487,43 @@
   align-items: start;
 }
 
+.pricing-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.pricing-promo-tag {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--color-red);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: 800;
+  padding: 0.4rem 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--radius-lg) 0 var(--radius-xl) 0;
+}
+
+.pricing-promo-item {
+  color: var(--color-red) !important;
+  font-weight: 600;
+  border-top: 1px dashed var(--color-gray-200);
+  padding-top: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.pricing-promo-item svg {
+  color: var(--color-red);
+}
+
+@media (max-width: 768px) {
+  .pricing-grid-2 { grid-template-columns: 1fr; max-width: 480px; margin-left: auto; margin-right: auto; }
+}
+
 .additional-lessons {
   background: var(--color-gray-50);
 }
