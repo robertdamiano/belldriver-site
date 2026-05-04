@@ -491,7 +491,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-xl);
-  align-items: start;
+  align-items: stretch;
 }
 
 .pricing-promo-tag {
