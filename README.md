@@ -9,11 +9,12 @@ Marketing website for Bell Driver Education, deployed on Firebase Hosting.
 
 ## Local development
 
-Because this is a static site, you can open `index.html` directly or run a local static server.
+Because this is a static site, the site files live in `public/` (the only folder Firebase publishes). Open `public/index.html` directly or run a local static server from that folder.
 
 Example (Python):
 
 ```bash
+cd public
 python -m http.server 8080
 ```
 

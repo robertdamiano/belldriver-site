@@ -2,3 +2,6 @@ bell-driver-site-bbc3b3d5996a.json
 # Google service account key files
 *-firebase-adminsdk-*.json
 *service-account*.json
+
+# Credentials written by google-github-actions/auth in CI
+gha-creds-*.json

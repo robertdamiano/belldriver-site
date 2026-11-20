@@ -103,15 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   };
 
+  // Online program has no class dates, so step 3 (Dates) is skipped
+  const isOnline = () => document.getElementById('program_type').value === 'Online';
+
   // Navigation Logic
   document.getElementById('btn-next-1').addEventListener('click', () => { if (validateStep1()) showStep(2); });
   document.getElementById('btn-prev-2').addEventListener('click', () => showStep(1));
-  document.getElementById('btn-next-2').addEventListener('click', () => { if (validateStep2()) showStep(3); });
+  document.getElementById('btn-next-2').addEventListener('click', () => { if (validateStep2()) showStep(isOnline() ? 4 : 3); });
   document.getElementById('btn-prev-3').addEventListener('click', () => showStep(2));
   document.getElementById('btn-next-3').addEventListener('click', () => showStep(4));
-  document.getElementById('btn-prev-4').addEventListener('click', () => showStep(3));
+  document.getElementById('btn-prev-4').addEventListener('click', () => showStep(isOnline() ? 2 : 3));
 
   // Course Date Modal
+  renderCourses(document.getElementById('course-list'), true);
   let selectedCourse = '';
   const modalOverlay = document.getElementById('date-modal-overlay');
   const modalConfirmBtn = document.getElementById('date-modal-confirm');
@@ -149,13 +153,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Deselect course
-  document.getElementById('btn-deselect-course').addEventListener('click', () => {
+  const clearCourse = () => {
     selectedCourse = '';
     courseText.textContent = '';
     courseDisplay.style.display = 'none';
     document.querySelectorAll('input[name="selected_course"]').forEach(r => r.checked = false);
     modalConfirmBtn.disabled = true;
-  });
+  };
+  document.getElementById('btn-deselect-course').addEventListener('click', clearCourse);
+
+  // Hide the Dates step for the online program and renumber Payment
+  const updateProgramSteps = () => {
+    const online = isOnline();
+    document.getElementById('indicator-3').style.display = online ? 'none' : '';
+    document.querySelector('#indicator-4 .step-number').textContent = online ? '3' : '4';
+    document.getElementById('payment-step-num').textContent = online ? '3' : '4';
+    if (online) clearCourse();
+  };
+  document.getElementById('program_type').addEventListener('change', updateProgramSteps);
+  updateProgramSteps();
 
   // Remove visible error when typing
   document.querySelectorAll('.form-control').forEach(input => {
@@ -288,9 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
       fileToUpload = null;
       filePreview.classList.remove('visible');
       dropZone.style.display = 'block';
-      selectedCourse = '';
-      courseText.textContent = '';
-      courseDisplay.style.display = 'none';
+      clearCourse();
+      updateProgramSteps();
       showStep(1);
 
     } catch (err) {

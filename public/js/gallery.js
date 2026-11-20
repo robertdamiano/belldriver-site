@@ -21,7 +21,21 @@ const images = [
     'IMG-20240601-WA0003.jpg',
     'IMG-20240628-WA0000.jpg',
     'IMG-20240901-WA0002.jpg',
-    'IMG-20240901-WA0004.jpg'
+    'IMG-20240901-WA0004.jpg',
+    'grad-2026-01.jpg',
+    'grad-2026-02.jpg',
+    'grad-2026-03.jpg',
+    'grad-2026-04.jpg',
+    'grad-2026-05.jpg',
+    'grad-2026-06.jpg',
+    'grad-2026-07.jpg',
+    'grad-2026-08.jpg',
+    'grad-2026-09.jpg',
+    'grad-2026-10.jpg',
+    'grad-2026-11.jpg',
+    'grad-2026-12.jpg',
+    'grad-2026-13.jpg',
+    'grad-2026-14.jpg'
 ];
 
 document.addEventListener('DOMContentLoaded', () => {

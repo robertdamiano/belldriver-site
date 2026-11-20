@@ -7,6 +7,8 @@ Guidance for AI/code agents working in this repository.
 - Static marketing site for Bell Driver Education
 - Core stack: plain HTML/CSS/JavaScript
 - Hosting: Firebase Hosting (`bell-driver-site`)
+- Site files live in `public/`, the only folder Firebase publishes. Never put keys, credentials or notes there.
+- Course dates: edit `public/js/courses.js` only (feeds the Schedule page and the registration date picker).
 
 ## Expected workflow
 
